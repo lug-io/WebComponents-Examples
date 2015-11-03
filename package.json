@@ -1,0 +1,23 @@
+{
+  "name": "webcomponents-examples",
+  "version": "1.0.0",
+  "description": "for quick tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lug-io/WebComponents-Examples.git"
+  },
+  "author": "danny brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lug-io/WebComponents-Examples/issues"
+  },
+  "homepage": "https://github.com/lug-io/WebComponents-Examples#readme",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "webcomponents.js": "^0.7.2"
+  }
+}
