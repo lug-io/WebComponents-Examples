@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Templates</title>
+
+		<!-- Polyfills for WebComponents Support -->
+		<script type="text/javascript" src="../node_modules/webcomponents.js/webcomponents.js"></script>
+		<!-- For easier DOM manipulation -->
+		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+
+		<script>
+		$(function(){
+			function supportsTemplate() {
+				return 'content' in document.createElement('template');
+			}
+
+			if (supportsTemplate()) {
+			 	console.log("Good to go!");
+			} else {
+				console.log("Use old templating techniques or libraries.");
+			}
+		});
+		</script>
+	</head>
+	<body>
+
+
+	</body>
+</html>
