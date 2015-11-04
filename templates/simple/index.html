@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Templates</title>
+
+		<!-- Polyfills for WebComponents Support -->
+		<script type="text/javascript" src="../../bower_components/webcomponentsjs/webcomponents.js"></script>
+		<!-- For easier DOM manipulation -->
+		<script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+
+		<script>
+
+			// CHECK SUPPORT
+			function supportsTemplate() {
+				return 'content' in document.createElement('template');
+			}
+
+			// ADD SIMPLE
+			function addSimple(){
+				// Grab our template
+				var t = document.querySelector('template#simple').content;
+
+				// Optional -- Modify template
+
+				// Clone and add
+				var clone = document.importNode(t, true);
+				$("#simple-target").append(clone);
+
+				return false;
+			}
+
+			$(function(){
+				if (supportsTemplate()) {
+				 	console.log("Good to go!");
+				} else {
+					$("#if-support").html("Your browser does not work with the in-place polyfill.")
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<h3>Simple Template - Example</h3>
+
+		<div id="simple-target" style="width: 100%; min-height: 50px; border: solid 1px black;">
+			 <!-- Simple Template will be added here -->
+			 <span>Pre-Existing Span</span>
+		</div>
+
+		<div id="if-support">
+			<button onclick="addSimple()">Add Template</button>
+		</div>
+
+
+
+		<!-- Template Storage ;) -->
+		<template id="simple">
+			<style>
+				span { color: purple; }
+			</style>
+
+			<img src="http://placehold.it/50x50" />
+			<span>Hello World!</span>
+
+			<script>
+				function boom(){
+					alert("BOOM!");
+				}
+				boom();
+			</script>
+		</template>
+		<!-- END Template Storage -->
+	</body>
+</html>

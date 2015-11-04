@@ -4,9 +4,9 @@
 		<title>Templates</title>
 
 		<!-- Polyfills for WebComponents Support -->
-		<script type="text/javascript" src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+		<script type="text/javascript" src="../../bower_components/webcomponentsjs/webcomponents.js"></script>
 		<!-- For easier DOM manipulation -->
-		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+		<script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
 
 		<script>
 
@@ -15,20 +15,6 @@
 				return 'content' in document.createElement('template');
 			}
 
-			// ADD SIMPLE
-			function addSimple(){
-				// Grab our template
-				var t = document.querySelector('template#simple').content;
-
-				// Optional -- Modify template
-
-				// Clone and add
-				var clone = document.importNode(t, true);
-				$("#simple-target").append(clone);
-
-				return false;
-			}
-			
 			// ADD ROW
 			function addRow(){
 
@@ -66,48 +52,49 @@
 		</script>
 	</head>
 	<body>
-		<h1>Templates</h1>
-		
+		<h3>"Data Binding"</h3>
+		<form id="data-binding-form" onsubmit="return addRow()" style="width: 100%;">
 
-		<h2>Simple Template</h2>
-		<div id="simple-target" style="width: 100%; min-height: 50px; border: solid 1px black;">
-			 <!-- Simple Template will be added here -->
-			 <span>Pre-Existing Span</span>
-		</div>
-		<template id="simple">
-			<style>
-				span { color: purple; }
-			</style>
+			<div style="float: left; width: 50%;">
+				<div>
+					<label for="name-field">Name:</label>
+					<input type="text" name="name" id="name-field" />
+				</div>
+			
+				<div>
+					<label for="age-field">Age:</label>
+					<input type="text" name="age" id="age-field" />
+				</div>
 
-			<img src="http://placehold.it/50x50" />
-			<span>Hello World!</span>
+				<div>
+					<label for="gender-field">Gender:</label>
+					<input type="text" name="gender" id="gender-field" />
+				</div>
+			</div>
 
-			<script>
-				function boom(){
-					alert("BOOM!");
-				}
-				boom();
-			</script>
-		</template>
-
-		<button onclick="addSimple()">ImportNode</button>
-
-
-		<h2>"Data Binding"</h2>
-		<form id="data-binding-form" onsubmit="return addRow()">
-
-			<label for="name-field">Name:</label>
-			<input type="text" name="name" id="name-field" />
-		
-			<label for="age-field">Age:</label>
-			<input type="text" name="age" id="age-field" />
-
-			<label for="gender-field">Gender:</label>
-			<input type="text" name="gender" id="gender-field" />
-
-			 <input type="submit" name="Submit" value="Submit"/>
+			<div style="float: right; width: 50%;">
+				<input type="submit" name="Submit" value="Submit"/>
+			</div>
 		</form>
 
+		<style>
+			body {
+				color: rgba(0, 0, 0, 0.8);
+			}
+			table {
+				text-align: center;
+				border: 1px solid black;
+				width: 100%;
+			}
+			thead {
+				background-color: #119DA4;
+				color: #fff;
+			}
+			label {
+				display:inline-block;
+				width: 50px;
+			}
+		</style>
 		<table id="persons-table">
 		<thead>
 			<tr>
