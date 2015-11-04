@@ -4,7 +4,9 @@
 		<title>Templates</title>
 
 		<!-- Polyfills for WebComponents Support -->
-		<script type="text/javascript" src="../node_modules/webcomponents.js/webcomponents.js"></script>
+		<script type="text/javascript" src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+		<!-- Polymer for "Abstraction" comparisons -->
+		<link rel="import" href="../bower_components/polymer/polymer.html"><!-- Note HTML Import -->
 		<!-- For easier DOM manipulation -->
 		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
 
@@ -19,13 +21,22 @@
 			function addRow(){
 
 				// Grab our template
-				var t = document.querySelector('template#table-row');
+				var t = document.querySelector('template#table-row').content;
 
 				// Optional -- Modify template
-				//t.content.querySelector('img').src = 'logo.png';
+				var form = document.querySelector('#data-binding-form');
+
+				var age = form.querySelector("#age-field").value; 		//var age = $("#data-binding-form #age-field"); // Equiv
+				var name = form.querySelector("#name-field").value;
+				var gender = form.querySelector("#gender-field").value;
+
+				t.querySelectorAll("td:first-child")[0].innerHTML = name;
+				t.querySelectorAll("td:nth-child(2)")[0].innerHTML = age;
+				t.querySelectorAll("td:last-child")[0].innerHTML = gender;
+
 
 				// Clone/activate template & add to page
-				var clone = document.importNode(t.content, true);
+				var clone = document.importNode(t, true);
 				$("#persons-table tr:last").after(clone);
 
 				return false;
