@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/lug-io/WebComponents-Examples#readme",
   "dependencies": {
-    "jquery": "^2.1.4",
-    "webcomponents.js": "^0.7.2"
+    "jquery": "^2.1.4"
   }
 }
