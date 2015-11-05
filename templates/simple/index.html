@@ -25,6 +25,7 @@
 				// Clone and add
 				var clone = document.importNode(t, true);
 				$("#simple-target").append(clone);
+				boom();
 
 				return false;
 			}
@@ -65,7 +66,6 @@
 				function boom(){
 					alert("BOOM!");
 				}
-				boom();
 			</script>
 		</template>
 		<!-- END Template Storage -->
