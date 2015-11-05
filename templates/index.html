@@ -2,135 +2,26 @@
 <html>
 	<head>
 		<title>Templates</title>
-
-		<!-- Polyfills for WebComponents Support -->
-		<script type="text/javascript" src="../bower_components/webcomponentsjs/webcomponents.js"></script>
-		<!-- For easier DOM manipulation -->
-		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
-
-		<script>
-
-			// CHECK SUPPORT
-			function supportsTemplate() {
-				return 'content' in document.createElement('template');
-			}
-
-			// ADD SIMPLE
-			function addSimple(){
-				// Grab our template
-				var t = document.querySelector('template#simple').content;
-
-				// Optional -- Modify template
-
-				// Clone and add
-				var clone = document.importNode(t, true);
-				$("#simple-target").append(clone);
-
-				return false;
-			}
-			
-			// ADD ROW
-			function addRow(){
-
-				// Grab our template
-				var t = document.querySelector('template#table-row').content;
-
-				// Optional -- Modify template
-				var form = document.querySelector('#data-binding-form');
-
-				var age = form.querySelector("#age-field").value; 		//var age = $("#data-binding-form #age-field"); // Equiv
-				var name = form.querySelector("#name-field").value;
-				var gender = form.querySelector("#gender-field").value;
-
-				t.querySelectorAll("td:first-child")[0].innerHTML = name;
-				t.querySelectorAll("td:nth-child(2)")[0].innerHTML = age;
-				t.querySelectorAll("td:last-child")[0].innerHTML = gender;
-
-
-				// Clone/activate template & add to page
-				var clone = document.importNode(t, true);
-				$("#persons-table tr:last").after(clone);
-
-				return false;
-			}
-
-
-		$(function(){
-			if (supportsTemplate()) {
-			 	console.log("Good to go!");
-			} else {
-				console.log("Use old templating techniques or libraries.");
-			}
-
-		});
-		</script>
 	</head>
 	<body>
-		<h1>Templates</h1>
-		
+		<h1>Template Element Examples</h1>
 
-		<h2>Simple Template</h2>
-		<div id="simple-target" style="width: 100%; min-height: 50px; border: solid 1px black;">
-			 <!-- Simple Template will be added here -->
-			 <span>Pre-Existing Span</span>
-		</div>
-		<template id="simple">
-			<style>
-				span { color: purple; }
-			</style>
+		<nav>
+			<ul>
+				<li><a href="simple/">Simple Template</a></li>
+				<li><a href="table/">"Data Binding"</a></li>
+			</ul>
+		</nav>
 
-			<img src="http://placehold.it/50x50" />
-			<span>Hello World!</span>
+		<h3>For more on the template element...</h3>
+		<nav>
+			<ul>
+				<li><a href="http://dannyrb.com/posts/the-template-tag-a-refresher/">A Refresher on the Template Tag</a></li>
+				<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/template/">HTML5 Rocks! Tutorial</a></li>
+				<li><a href="http://blog.teamtreehouse.com/creating-reusable-markup-with-the-html-template-element">Team Treehouse</a></li>
+			</ul>
+		</nav>
 
-			<script>
-				function boom(){
-					alert("BOOM!");
-				}
-				boom();
-			</script>
-		</template>
-
-		<button onclick="addSimple()">ImportNode</button>
-
-
-		<h2>"Data Binding"</h2>
-		<form id="data-binding-form" onsubmit="return addRow()">
-
-			<label for="name-field">Name:</label>
-			<input type="text" name="name" id="name-field" />
-		
-			<label for="age-field">Age:</label>
-			<input type="text" name="age" id="age-field" />
-
-			<label for="gender-field">Gender:</label>
-			<input type="text" name="gender" id="gender-field" />
-
-			 <input type="submit" name="Submit" value="Submit"/>
-		</form>
-
-		<table id="persons-table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Age</th>
-				<th>Gender</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Chester Examplefield</td>
-				<td>92</td>
-				<td>Female</td>
-			</tr>
-			<template id="table-row">
-			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-			</tr>
-			</template>
-		</tbody>
-		</table>
 
 	</body>
 </html>
