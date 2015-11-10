@@ -17,7 +17,6 @@
 
 			// ADD ROW
 			function addRow(){
-
 				// Grab our template
 				var t = document.querySelector('template#table-row').content;
 
@@ -28,15 +27,18 @@
 				var name = form.querySelector("#name-field").value;
 				var gender = form.querySelector("#gender-field").value;
 
-				t.querySelectorAll("td:first-child")[0].innerHTML = name;
-				t.querySelectorAll("td:nth-child(2)")[0].innerHTML = age;
-				t.querySelectorAll("td:last-child")[0].innerHTML = gender;
+				t.querySelector("td:first-child").innerHTML = name;
+				t.querySelector("td:nth-child(2)").innerHTML = age;
+				t.querySelector("td:last-child").innerHTML = gender;
 
 
 				// Clone/activate template & add to page
 				var clone = document.importNode(t, true);
-				$("#persons-table tr:last").after(clone);
 
+				var allRows = document.querySelectorAll("table tr");
+				var lastRow = allRows[allRows.length- 1];
+
+				lastRow.parentNode.insertBefore(clone, lastRow.nextSibling);
 				return false;
 			}
 

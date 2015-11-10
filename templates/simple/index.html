@@ -17,6 +17,7 @@
 
 			// ADD SIMPLE
 			function addSimple(){
+
 				// Grab our template
 				var t = document.querySelector('template#simple').content;
 
@@ -24,7 +25,7 @@
 
 				// Clone and add
 				var clone = document.importNode(t, true);
-				$("#simple-target").append(clone);
+				document.getElementById("simple-target").appendChild(clone);
 				boom();
 
 				return false;
@@ -48,7 +49,7 @@
 		</div>
 
 		<div id="if-support">
-			<button onclick="addSimple()">Add Template</button>
+			<button onclick="return addSimple(this)">Add Template</button>
 		</div>
 
 
